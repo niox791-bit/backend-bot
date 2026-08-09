@@ -1,13 +1,14 @@
+
 import os
 
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, ContextTypes
 
 
-TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+TOKEN = os.getenv("TOKEN")
 
 if not TOKEN:
-    raise RuntimeError("TELEGRAM_BOT_TOKEN est absente.")
+    raise RuntimeError("La variable TOKEN est absente de Render.")
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -28,14 +29,11 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 
-def main():
-    app = Application.builder().token(TOKEN).build()
+app = Application.builder().token(TOKEN).build()
 
-    app.add_handler(CommandHandler("start", start))
-
-    print("✅ Bot Telegram lancé")
-
-    app.run_polling()
+app.add_handler(CommandHandler("start", start))
 
 
 if __name__ == "__main__":
+    print("✅ Bot lancé")
+    app.run_polling()
