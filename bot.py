@@ -1,7 +1,6 @@
-
 import os
 
-from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
 from telegram.ext import Application, CommandHandler, ContextTypes
 
 
@@ -15,8 +14,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     bouton = [
         [
             InlineKeyboardButton(
-                "🌐 Ouvrir le site",
-                url="https://vente-ctv.vercel.app/"
+                "📱 Ouvrir l’application",
+                web_app=WebAppInfo(url="https://vente-ctv.vercel.app/")
             )
         ]
     ]
@@ -24,7 +23,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     clavier = InlineKeyboardMarkup(bouton)
 
     await update.message.reply_text(
-        "Bienvenue sur ma boutique 👋",
+        "Bienvenue sur ma boutique 👋\n\n"
+        "Appuie sur le bouton ci-dessous pour ouvrir l’application.",
         reply_markup=clavier
     )
 
