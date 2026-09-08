@@ -1,4 +1,4 @@
-```python
+
 import os
 
 from telegram import (
@@ -103,4 +103,3 @@ app.add_handler(
 if __name__ == "__main__":
     print("✅ Bot lancé")
     app.run_polling()
-```
